@@ -4,7 +4,7 @@ import 'firebase/database';
 import 'firebase/storage';
 import FileUpload from './FileUpload'
 
-import logo from './logo.svg';
+import logo from './t3chfy_cmyk.png';
 import './App.css';
 
 class App extends Component {
@@ -80,21 +80,24 @@ class App extends Component {
   renderLoginButton () {
     if (this.state.user){
       return (
-        <div>
-          <img src={this.state.user.photoURL} alt={this.state.user.displayName}/>
+        <div className="App-intro">
           <p>Hola {this.state.user.displayName}!</p>
-          <button onClick={this.handleLogout}>Salir</button>
+          <button onClick={this.handleLogout} className="App-btn">
+            Salir
+          </button>
           <FileUpload onUpload={ this.handleUpload } uploadValue={this.state.uploadValue}/>
         
           {
             this.state.pictures.map(picture => (
-              <div>
-                <img src={picture.photoURL} alt={picture.displayName} width="75" height="75"/>
-                <span>{picture.displayName}</span>
-                <br/>
-                <img src={picture.image} alt="" width="200" height="200"/>
-                
-              </div>
+              <div className="App-card">
+              <figure className="App-card-image">
+                <img width="320" src={picture.image} alt=""/>
+                <figCaption className="App-card-footer">
+                  <img className="App-card-avatar" src={picture.photoURL} alt={picture.displayName} />
+                  <span className="App-card-name">{picture.displayName}</span>
+                </figCaption>
+              </figure>
+            </div>
             )).reverse()
           }
         
@@ -110,14 +113,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Pseudogram</h2>
-        </header>
-        <div className="App-intro">
-          { this.renderLoginButton() }
+          <h2>T3chfest 2017</h2>
         </div>
-          
+        { this.renderLoginButton() }
       </div>
     );
   }
