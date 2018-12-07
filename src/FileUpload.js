@@ -11,9 +11,9 @@ class FileUpload extends Component {
 	render () {
 		return (
 			<div>
-				<progress value={this.props.uploadValue} max="100"></progress>﻿
+				<progress value={this.props.uploadValue} max="100"></progress>
 				<br/>
-				<input type="file" onChange={this.props.onUpload}/>
+				<input id="uploadNewImage" type="file" onChange={this.props.onUpload}/>
 			</div>
 		)
 	}

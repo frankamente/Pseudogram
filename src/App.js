@@ -71,6 +71,10 @@ class App extends Component {
         const dbRef = firebase.database().ref('pictures')
         const newPicture = dbRef.push();
         newPicture.set(record);
+        this.setState({
+          uploadValue: 0
+        })
+        document.getElementById("uploadNewImage").value = "";
     })
       
 				
@@ -105,7 +109,7 @@ class App extends Component {
       );
     } else {
       return (
-        <button onClick={this.handleAuth}>Login con Google</button>
+        <button onClick={this.handleAuth} className="App-btn">Login con Google</button>
       );
     }
   }
